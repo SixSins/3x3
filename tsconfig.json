@@ -1,0 +1,8 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "jsx": "react",
+    "sourceMap": true
+  }
+}

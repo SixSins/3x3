@@ -1,0 +1,129 @@
+
+// CONSTANT: base font size
+// the base pixel font size
+$bb-font-size: 16px !default;
+
+// CONSTANT: line size
+// the pixel height of each line
+$bb-line-size: 24px !default;
+
+// CONSTANT: type scale
+// the ratio by which each bitsize changes compared to the previous bitsize
+$bb-type-scale: 1.414 !default;
+
+// CONSTANT: spacing mixin default property
+// set which property the spacing mixin should generate for
+$bb-spacing-property: margin !default;
+
+// CONSTANT: line height
+// the unitless height of each line, pre-calculated from other variables
+$bb-line-height: $bb-line-size / $bb-font-size;
+
+// FUNCTION: power
+// raise a number to an integer power
+@function pow($base, $exponent)
+{
+  $val: 1;
+
+  @if $exponent > 0
+  {
+    @for $i from 1 through $exponent
+    {
+      $val: $val * $base;
+    }
+  }
+
+  @else if $exponent < 0
+  {
+    @for $i from -1 through -$exponent
+    {
+      $val: $val * (1/$base);
+    }
+  }
+
+  @return $val;
+}
+
+// FUNCTION: em
+// convert a pixel value to ems based on the passed context
+@function em($target, $context: $bb-font-size)
+{
+  @return ($target / $context) * 1em;
+}
+
+// FUNCTION: rem
+// convert a pixel value to rems based on the passed context
+@function rem($target)
+{
+  @return ($target / $bb-font-size) * 1rem;
+}
+
+// FUNCTION: bb-size
+// creates a rem bitsize for the passed power
+@function bb-size($power)
+{
+  @return pow($bb-type-scale, $power) * 1rem;
+}
+
+// MIXIN: bb-rhythm
+// establishes a rhythmic context for the bb-scale and bb-spacing mixins
+@mixin bb-rhythm
+{
+  line-height: $bb-line-height;
+}
+
+// MIXIN: bb-scale
+// sizes font to the passed bitsize and scales its line-height to maintain rhythm
+// requires a bb-rhythm context
+@mixin bb-scale($power)
+{
+  font-size: bb-size($power);
+  line-height:
+    ($bb-line-size * ceil(pow($bb-type-scale, $power) * $bb-font-size / $bb-line-size))
+    / (pow($bb-type-scale, $power) * $bb-font-size);
+}
+
+// MIXIN: bb-spacing
+// adds vertical spacing while maintaining rhythm
+// requires a bb-rhythm context
+@mixin bb-spacing($property: $bb-spacing-property, $side: both)
+{
+  $value: 1rem * $bb-line-height;
+
+  @if $side == both
+  {
+    #{$property}-top: $value;
+    #{$property}-bottom: $value;
+  }
+
+  @else if $side == top or $side == bottom
+  {
+    #{$property}-#{$side}: $value;
+  }
+
+  @else
+  {
+    @warn "From bitbox mixin \"spacing\": property $side must be 'top', 'bottom', or 'both'; is actually #{$side}";
+  }
+}
+
+// MIXIN: bb-leader
+// shorthand for the bb-spacing mixin, only adding top spacing
+@mixin bb-leader
+{
+  @include bb-spacing($side: top);
+}
+
+// MIXIN: bb-trailer
+// shorthand for the bb-spacing mixin, only adding bottom spacing
+@mixin bb-trailer
+{
+  @include bb-spacing($side: bottom);
+}
+
+// SELECTOR: global em context
+// establishes global font size change, allows rem font sizes to work
+:root
+{
+  font-size: em($bb-font-size, 16px);
+}

@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Roboto:300');
+@import "reset";
+
+$bb-font-size: 18px;
+$bb-line-size: 27px;
+$bb-type-scale: 1.250;
+
+@import "bitbox";
+
+$clouds: #ecf0f1;
+$silver: #bdc3c7;
+$amethyst: #9b59b6;
+$wisteria: #8e44ad;
+$midnight: #2c3e50;
+
+@mixin font-body
+{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+@mixin font-logo
+{
+  font-family: "Abel", sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-title
+{
+  font-family: "Abel", sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+@mixin font-interface
+{
+  font-family: "Abel", sans-serif;
+  font-weight: normal;
+}
+
+@mixin font-heading
+{
+  font-family: "Abel", sans-serif;
+  font-weight: normal;
+}
+
+body
+{
+  @include font-body;
+  background: $clouds;
+}
+
+.cc
+{
+  width: 95%;
+  max-width: rem(1250px);
+  margin: 0 auto;
+}
+
+a
+{
+  text-decoration: none;
+  color: $wisteria;
+
+  &:hover
+  {
+    text-decoration: underline;
+    color: $amethyst;
+  }
+}
+
+#header
+{
+  padding: bb-size(2) 0;
+  background: $amethyst;
+
+  > .cc
+  {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  
+}
+
+#logo
+{
+  @include font-logo;
+  font-size: bb-size(4);
+  color: $clouds;
+}
+
+#nav
+{
+  @include font-interface;
+  display: flex;
+  align-items: center;
+
+  a
+  {
+    display: block;
+    margin-left: bb-size(2);
+    color: $clouds;
+
+    &:hover
+    {
+      color: lighten($amethyst, 30%);
+      text-decoration: none;
+    }
+  }
+}
+
+#main
+{
+  @include bb-rhythm;
+  background: $wisteria;
+  color: $clouds;
+
+  > .cc
+  {
+    height: bb-size(17);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .locator
+  {
+    width: 100%;
+    max-width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1
+  {
+    @include font-heading;
+    @include bb-scale(5);
+    text-align: center;
+  }
+
+  p
+  {
+    @include font-heading;
+    @include bb-scale(3);
+    @include bb-spacing;
+    text-align: center;
+  }
+
+  .inputForm,
+  .output
+  {
+    display: flex;
+  }
+
+  input[type="number"],
+  input[type="submit"],
+  .output div
+  {
+    @include font-interface;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+        -ms-appearance: none;
+    
+    border: 0;
+    font-size: bb-size(2);
+    margin: 0 bb-size(-2);
+    padding: bb-size(-2) bb-size(-1);
+    width: available;
+
+    border-radius: bb-size(-1);
+    background: $amethyst;
+    color: $clouds;
+  }
+
+  input[type="number"]
+  {
+    &:focus
+    {
+      outline: none;
+      background: lighten($amethyst, 3%);
+    }
+  }
+
+  input[type="submit"]
+  {
+    &:hover
+    {
+      cursor: pointer;
+      background: lighten($amethyst, 3%);
+    }
+  }
+
+}
+
+.article
+{
+  @include bb-rhythm;
+  padding: bb-size(5) 0;
+
+  h3
+  {
+    @include font-heading;
+    @include bb-spacing;
+    @include bb-scale(4);
+    text-align: center;
+    color: $wisteria;
+  }
+
+  p
+  {
+    @include bb-spacing;
+    max-width: rem(650px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video
+  {
+    @include bb-spacing;
+    max-width: rem(650px);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+#footer
+{
+  padding: bb-size(0);
+  font-size: bb-size(-1);
+  background: $wisteria;
+  color: $clouds;
+}
+

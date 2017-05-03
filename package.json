@@ -1,0 +1,39 @@
+{
+  "name": "3x3",
+  "version": "0.1.0",
+  "description": "Finds a 3x3 in nether bedrock",
+  "main": "dist/bundle.js",
+  "repository": "SixSins/3x3",
+  "author": "SixSins <sixsixsixsins@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "serve": "webpack-dev-server",
+    "sass": "node-sass --output-style compressed --source-map true --output dist src",
+    "sass:watch": "node-sass --watch --output-style compressed --source-map true --output dist src",
+    "build": "webpack",
+    "build:production": "webpack -p"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.5.2",
+    "@types/lodash": "^4.14.63",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.15",
+    "@types/react": "^15.0.23",
+    "@types/react-dom": "^15.5.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "node-sass": "^4.5.2",
+    "ts-loader": "^2.0.3",
+    "ts-node": "^3.0.2",
+    "typescript": "^2.3.2",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
