@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/chai": "^3.5.2",
     "@types/lodash": "^4.14.63",
+    "@types/long": "^3.0.31",
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.15",
     "@types/react": "^15.0.23",
@@ -33,6 +34,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "lodash": "^4.17.4",
+    "long": "^3.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   }
