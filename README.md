@@ -15,5 +15,3 @@ This app works by taking your current coordinates and comparing them with a big 
 ## Credit
 
 Credit goes to Panda4994 for the idea and for his list of 3x3 coordinates. If you want to know how exactly to kill the Wither quickly like this, [watch his video](https://youtu.be/hx4I2zz_6do).
-
-I made this app for a few reasons. I've had a script sitting on my desktop for the past few months that does the exact same thing, but it was ugly and I couldn't share it. I wanted to make a browser version partly because I wanted some more experience with JavaScript tech. But the thing that finally pushed me to do it was [watching Iskall85 fail hardcore at killing the Wither](https://youtu.be/ReH2vR___Dg?t=13m21s).
