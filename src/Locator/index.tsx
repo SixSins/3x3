@@ -28,7 +28,11 @@ export default class Locator extends React.Component<{}, LocatorState>
 
   componentDidMount()
   {
+<<<<<<< HEAD
     axios("/3x3/db/data.json")
+=======
+    axios("./db/data.json")
+>>>>>>> master
       .then((data) =>
       {
         this.setState({
