@@ -11,8 +11,9 @@
     "serve": "webpack-dev-server",
     "sass": "node-sass --output-style compressed --source-map true --output dist src",
     "sass:watch": "node-sass --watch --output-style compressed --source-map true --output dist src",
-    "build": "webpack",
-    "build:production": "webpack -p"
+    "ts": "webpack",
+    "ts:production": "webpack -p",
+    "build": "yarn run ts:production ; yarn run sass"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.63",
