@@ -3,7 +3,7 @@ let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let extractSass = new ExtractTextPlugin({
   filename: "style.css",
-  disable: process.env.NODE_ENV.toLowerCase() === "development"
+  disable: typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV.toLowerCase() === "development"
 });
 
 let config = {
