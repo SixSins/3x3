@@ -1,3 +1,6 @@
 node_modules
-dist
+dist/*.js
+dist/*.css
+dist/*.map
 .vscode
+*.log

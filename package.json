@@ -8,19 +8,20 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "serve": "webpack-dev-server",
-    "sass": "node-sass --output-style compressed --source-map true --output dist src",
-    "sass:watch": "node-sass --watch --output-style compressed --source-map true --output dist src",
-    "ts": "webpack",
-    "ts:production": "webpack -p",
-    "build": "yarn run ts:production ; yarn run sass"
+    "serve": "webpack-dev-server --inline --hot",
+    "build": "webpack",
+    "build:prod": "webpack -p"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.63",
     "@types/node": "^7.0.15",
     "@types/react": "^15.0.23",
     "@types/react-dom": "^15.5.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "2.1.2",
     "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
     "ts-loader": "^2.0.3",
     "ts-node": "^3.0.2",
     "typescript": "^2.3.2",
