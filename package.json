@@ -13,13 +13,13 @@
     "build:prod": "webpack -p"
   },
   "devDependencies": {
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
     "@types/lodash": "^4.14.63",
     "@types/node": "^7.0.15",
     "@types/react": "^15.0.23",
     "@types/react-dom": "^15.5.0",
-    "webpack-dev-server": "^2.4.5"
-  },
-  "dependencies": {
     "axios": "^0.16.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "2.1.2",
