@@ -4,6 +4,3 @@
 [build]
   publish = "dist/"
   command = "yarn build:prod"
-
-[context.production.environment]
-  NODE_ENV = "production"
