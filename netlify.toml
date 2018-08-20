@@ -1,6 +1,0 @@
-[Settings]
-  ID = "bc507aea-f15c-421e-ad64-bdb555a59e79"
-
-[build]
-  publish = "dist/"
-  command = "yarn build:prod"
