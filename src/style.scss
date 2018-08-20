@@ -7,11 +7,12 @@ $bb-type-scale: 1.250;
 
 @import "bitbox";
 
-$clouds: #ecf0f1;
-$silver: #bdc3c7;
-$amethyst: #9b59b6;
-$wisteria: #8e44ad;
-$midnight: #2c3e50;
+// https://flatuicolors.com/palette/gb
+$mazarine-blue: #273c75;
+$pico-void: #192a56;
+$electromagnetic: #2f3640;
+$lynx-white: #f5f6fa;
+$hint-of-pensive: #dcdde1;
 
 @mixin font-body
 {
@@ -47,7 +48,8 @@ $midnight: #2c3e50;
 body
 {
   @include font-body;
-  background: $clouds;
+  background: $lynx-white;
+  color: $electromagnetic;
 }
 
 .cc
@@ -60,19 +62,19 @@ body
 a
 {
   text-decoration: none;
-  color: $wisteria;
+  color: $pico-void;
 
   &:hover
   {
     text-decoration: underline;
-    color: $amethyst;
+    color: $mazarine-blue;
   }
 }
 
 #header
 {
   padding: bb-size(2) 0;
-  background: $amethyst;
+  background: $mazarine-blue;
 
   > .cc
   {
@@ -85,9 +87,21 @@ a
 
 #logo
 {
+  display: flex;
+  align-items: center;
   @include font-logo;
-  font-size: bb-size(4);
-  color: $clouds;
+  color: $lynx-white;
+
+  h1
+  {
+    font-size: bb-size(4);
+  }
+
+  h6
+  {
+    font-size: bb-size(0);
+    margin-left: bb-size(-3);
+  }
 }
 
 #nav
@@ -100,11 +114,11 @@ a
   {
     display: block;
     margin-left: bb-size(2);
-    color: $clouds;
+    color: $lynx-white;
 
     &:hover
     {
-      color: lighten($amethyst, 30%);
+      color: lighten($mazarine-blue, 30%);
       text-decoration: none;
     }
   }
@@ -113,8 +127,8 @@ a
 #main
 {
   @include bb-rhythm;
-  background: $wisteria;
-  color: $clouds;
+  background: $pico-void;
+  color: $lynx-white;
 
   > .cc
   {
@@ -173,8 +187,8 @@ a
     width: available;
 
     border-radius: bb-size(-1);
-    background: $amethyst;
-    color: $clouds;
+    background: $mazarine-blue;
+    color: $lynx-white;
   }
 
   input[type="number"]
@@ -182,7 +196,7 @@ a
     &:focus
     {
       outline: none;
-      background: lighten($amethyst, 3%);
+      background: lighten($mazarine-blue, 3%);
     }
   }
 
@@ -191,7 +205,7 @@ a
     &:hover
     {
       cursor: pointer;
-      background: lighten($amethyst, 3%);
+      background: lighten($mazarine-blue, 3%);
     }
   }
 
@@ -208,7 +222,7 @@ a
     @include bb-spacing;
     @include bb-scale(4);
     text-align: center;
-    color: $wisteria;
+    color: $pico-void;
   }
 
   p
@@ -233,7 +247,6 @@ a
 {
   padding: bb-size(0);
   font-size: bb-size(-1);
-  background: $wisteria;
-  color: $clouds;
+  background: $pico-void;
+  color: $lynx-white;
 }
-
