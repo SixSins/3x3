@@ -1,6 +1,6 @@
-# [3x3](https://sixsins.github.io/3x3/)
+# [3x3](https://wither3x3.net)
 
-Kill your Wither quickly and easily. https://sixsins.github.io/3x3/
+Kill your Wither quickly and easily. https://wither3x3.net
 
 ## How it works
 
