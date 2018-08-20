@@ -19,7 +19,7 @@ export default class Locator extends React.Component<{}, LocatorState>
 
     this.state = {
       user: [0, 0],
-      located: [0, -31],
+      located: [32, 1],
       data: [],
       spinner: true
     };
