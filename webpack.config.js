@@ -1,55 +1,95 @@
-let path = require("path");
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require("path");
+const autoprefixer = require("autoprefixer");
 
-let extractSass = new ExtractTextPlugin({
-  filename: "style.css",
-  disable: typeof process.env.NODE_ENV !== "undefined" && process.env.NODE_ENV.toLowerCase() === "development"
-});
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { HotModuleReplacementPlugin } = require("webpack");
 
-let config = {
-  entry: "./src/index.tsx",
+let plugins = [];
+
+const IS_DEV = typeof process.env.NODE_ENV === "undefined" || process.env.NODE_ENV !== "netlify";
+
+plugins.push(new MiniCssExtractPlugin({
+  filename: "style.css"
+}));
+
+plugins.push(new HtmlWebpackPlugin({
+  template: "src/index.ejs",
+  title: "3x3 - Kill your Wither quickly",
+  meta: {
+    viewport: "width=device-width, initial-scale=1"
+  }
+}));
+
+if (IS_DEV) {
+  plugins.push(new HotModuleReplacementPlugin);
+}
+
+const config = {
+  mode: IS_DEV ? "development" : "production",
+
+  entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
-    path: path.resolve(__dirname) + "/dist",
+    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
-  devtool: "source-map",
+
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /.tsx?$/,
         use: "ts-loader"
       },
       {
-        test: /\.scss$/,
-        use: extractSass.extract({
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader: "sass-loader",
-              options: {
-                outputStyle: "compressed",
-                sourceMap: true
-              }
+        test: /.s?css$/,
+        use: [
+          {
+            loader: IS_DEV ? "style-loader" : MiniCssExtractPlugin.loader,
+            options: {
+              sourceMap: true
             }
-          ],
-          fallback: "style-loader"
-        }),
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              importLoaders: 2
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+              plugins: [
+                autoprefixer()
+              ]
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+              outputStyle: "compressed"
+            }
+          }
+        ]
       }
     ]
   },
-  plugins: [
-    extractSass
-  ],
+
+  plugins,
+
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".scss"]
+    extensions: [ ".js", ".jsx", ".ts", ".tsx", ".scss", ".css" ]
   },
+
+  devtool: IS_DEV ? "eval-source-map" : false,
+
   devServer: {
-    contentBase: "dist"
+    contentBase: path.resolve(__dirname, "dist"),
+    hot: true,
+    overlay: true,
+    port: 8080
   }
 }
 
