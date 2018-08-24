@@ -13,9 +13,9 @@ interface LocatorState
 export default class Locator extends React.Component<{}, LocatorState>
 {
 
-  constructor()
+  constructor(props)
   {
-    super();
+    super(props);
 
     this.state = {
       user: [0, 0],
